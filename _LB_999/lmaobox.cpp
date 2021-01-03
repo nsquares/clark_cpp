@@ -5,7 +5,7 @@ using namespace std;  //bad practice btw when doing school work
 int main(){
     //int x;
 
-    for(int i=0; i<5; i++){
+    for(int i=0; i<25; i++){
         cout<<i<<endl;
     }
     
