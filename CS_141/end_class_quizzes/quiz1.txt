@@ -1,0 +1,21 @@
+1. What is a variable?
+A varaible is a chuck of memory that can hold data and has a type to it.
+
+2. When should you an int vs a double?
+Use a double when you want to keep decimals and ints if you do not care about decimals.
+int are 
+
+3. legal values of a bool?
+true 
+false
+
+4. Difference between a char and a string is that a char holds one letter (single quotes) while string holds many (double quotes)
+
+5. ++ is increment by one on the originial variable value while + is just combining or standard addition 
+
+6. cin is not the smart in checking inputs and will blow up if not the correct type
+-is smart in throwing away whitespaces though
+
+
+
+-reading and short answer hw on moodle
