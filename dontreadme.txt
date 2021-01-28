@@ -7,3 +7,15 @@ g++ example.cpp -o name     //produces exe with "name"
 
 --- Terminal Cmd ---
 clear                       //clears
+
+
+
+
+
+
+--- Passing in HW ---
+//copy code from VScode and use right-click in putty/emacs to paste
+
+cp HW1.cpp /afs/cu/class/cs141/s21/nguyennt     //example command
+
+//cp means copy over to that directory
