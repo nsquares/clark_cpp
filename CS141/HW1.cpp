@@ -16,7 +16,7 @@ int main(){
     cout<<"What is the product name (one word)? ";
     cin>>product_name;
     
-    cout<<"Wholesale price per iterm? ";
+    cout<<"Wholesale price per item? ";
     cin>>wholesale_price;
 
     cout<<"Quantity? ";
