@@ -7,7 +7,7 @@ void rockpapersci();
 int main(){
     //ls -al command shows the permission of files and when they were made
     //exam on feb 11
-    //rockpapersci();
+    rockpapersci();
 
     //binary
     //octal base 8 - groups of 3 bits
@@ -82,6 +82,7 @@ void rockpapersci(){
                 cout<<"please use either r, p, or s\n";
             }            
         }
+        
 
         if (win1){
             wincount1++;
@@ -93,11 +94,13 @@ void rockpapersci(){
         }
         if (tie) cout<<"Tie\n";
 
+        cout<<"Player 1 wins: "<<wincount1<<" | Player 2 wins: "<<wincount2<<endl;
+
         cout<<"Again? ";
         cin>>repeat;
 
     } while(repeat=='y' || repeat=='y');
-    cout<<"Player 1 wins: "<<wincount2<<" Player 2 wins: "<<wincount2;
+
 
     //switch
 

@@ -1,6 +1,7 @@
 // Nathan Nguyen
-// HW 1
+// Inventory Assignment (HW1)
 // CS 141
+// last modified: 2/2/2021
 #include <iostream>
 using namespace std;
 
@@ -10,7 +11,7 @@ int main(){
     double wholesale_price; //wholesale price per item
     int quantity;
     double total_price_paid; //by the company
-    double markup;
+    double markup; //represented as a percent which is 10 for 10%
     double retail_price;  
 
     cout<<"What is the product name (one word)? ";
@@ -23,9 +24,9 @@ int main(){
     cin>>quantity;
     total_price_paid = wholesale_price * quantity;
 
-    cout<<"Markup (less than 1 so in decimal format)? "; //has to be less than one because I will add one when calculating retail and will not convert number to decimal
+    cout<<"Markup (as a percent)? "; //has to be greater than one because I will convert number to decimal and will add one when calculating retail 
     cin>>markup;
-    retail_price=wholesale_price*(1+markup);
+    retail_price=wholesale_price*(1+(markup/100));
 
     cout<<product_name<<", "<<wholesale_price<<", "<<quantity<<", "<<total_price_paid<<", "<<retail_price<<", "<<(retail_price*quantity)-total_price_paid;
     //print out complete record to user
