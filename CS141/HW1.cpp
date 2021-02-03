@@ -14,6 +14,8 @@ int main(){
     double markup; //represented as a percent which is 10 for 10%
     double retail_price;  
 
+    cout<<static_cast<char>(12); //clears terminal
+
     cout<<"What is the product name (one word)? ";
     cin>>product_name;
     
@@ -28,7 +30,7 @@ int main(){
     cin>>markup;
     retail_price=wholesale_price*(1+(markup/100));
 
-    cout<<product_name<<", "<<wholesale_price<<", "<<quantity<<", "<<total_price_paid<<", "<<retail_price<<", "<<(retail_price*quantity)-total_price_paid;
+    cout<<product_name<<", "<<wholesale_price<<", "<<quantity<<", "<<total_price_paid<<", "<<retail_price<<", "<<(retail_price*quantity)-total_price_paid<<endl;
     //print out complete record to user
 
     return 0;

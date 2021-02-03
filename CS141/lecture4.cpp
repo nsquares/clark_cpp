@@ -7,7 +7,7 @@ void rockpapersci();
 int main(){
     //ls -al command shows the permission of files and when they were made
     //exam on feb 11
-    rockpapersci();
+    //rockpapersci();
 
     //binary
     //octal base 8 - groups of 3 bits
@@ -37,7 +37,10 @@ int main(){
     //global variable is outside of main
     //if variables have the same name, innermost scope variable will be used
 
-    
+
+    cout<<static_cast<char>(12); //clears terminal
+    cout<<static_cast<char>(7); //triggers windows 10 bell
+    //btw, look at the ascii table for these cool two letter chars
 
 
 
