@@ -1,3 +1,15 @@
+/*
+int MyVar;
+MyVar = -1;
+while (MyVar != 21) {
+	cout << MyVar << endl;
+	MyVar += 2;
+	}
+*/
+
+
+
+
 #include <iostream>
 using namespace std;
 

@@ -12,6 +12,15 @@ void tri();
 int getint(int min, int max, string prompt); //write out the parameters/arugments when declaring, these are exactly the same as the ones in its definition, this is good practice only for readability
 //teacher did it so as the textbook
 
+
+int calc_val(int hund, int tens, int units); 
+//dont have to name the parameters here in declaring but it is useful 
+// for the programmer to remember what parameter is what in what order so always write it
+
+// Like it could all be 'int calc_val(int, int, int)'
+
+
+
 int main(){
 
 //linux power user
@@ -93,10 +102,9 @@ void pizza(){
     cout<<"Radius "<<r<<endl;
 }
 
-int value(int h, int t, int u){
-    int val;
-    val=100*h+10*t+u;
-    return(val);
+int calc_val(int hund, int tens, int units){
+
+    return(100*hund+10*tens+units);
 }
 
 

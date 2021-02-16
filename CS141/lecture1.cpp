@@ -26,7 +26,7 @@ int main(){
     const double SPEED_OF_SOUND = 1248; //ft per sec
 
     //cin throws away blanks and stops storing your input when it detects a blank or space
-    //cin does not convert string to int or in to string but what if we use var keyword?
+    //cin does not convert string to int or int to string but what if we use var keyword?
 
     //modulo == % //this gives only the remainder
 //--------------------------------------------------
