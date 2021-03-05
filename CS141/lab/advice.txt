@@ -1,0 +1,23 @@
+this
+was
+a
+two
+hour
+job
+and
+3/4 of the time was spent on counting '\n'
+so
+remember
+if
+you
+need
+to
+keep track of something
+like need to count \n
+use int
+okay?
+okay
+bye
+lol xd
+ppe btw
+
