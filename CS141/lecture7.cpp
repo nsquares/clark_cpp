@@ -1,3 +1,5 @@
+//all about functions
+
 #include <iostream>
 //#include <cmath>
 using namespace std;

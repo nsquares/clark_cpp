@@ -1,4 +1,4 @@
-//files
+//all about files
 
 #include <iostream> //cout and cin
 #include <fstream> //formated stream

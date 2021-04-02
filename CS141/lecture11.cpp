@@ -1,5 +1,7 @@
+//cout and cin manipulation and same for ofstreams and ifstreams
+
 #include <iostream>
-#include <cctype>
+//#include <cctype>
 using namespace std;
 
 int main(int argc, char *argv[]){   //how to pass stuff through the main at the command line during the call to execute like ./lect11 gsdjfgrehgieuh
