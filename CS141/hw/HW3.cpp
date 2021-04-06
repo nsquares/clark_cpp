@@ -1,0 +1,78 @@
+
+// Nathan Nguyen
+// Code Homework 3: files and arrays
+// CS 141
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+const int SIZE = 3;
+
+int main(){
+
+  string product_name;
+  double totalProfit;
+  double wholesale_price;
+  double markup;
+  int sum=0;
+  int arr[SIZE];       //this will hold 3 numbers for the quantities
+
+  ifstream in;
+
+
+  in.open("inventory.txt");
+  if(in.fail()){
+    cout<<"Cannot open 'inventory.txt' "<<endl;
+    return 0;
+  }
+
+
+  while(!in.eof()){
+
+    getline(in,product_name);
+
+    if(product_name=="END"){
+      break;
+    }
+    else{
+
+      in>>wholesale_price;
+      in>>markup;
+
+      sum=0;
+
+      for(int i=0; i<SIZE; i++){
+        in>>arr[i];
+        sum+=arr[i];
+      }
+
+      totalProfit=wholesale_price*(markup/100)*(sum);
+
+      cout.setf(ios::left);
+      cout.width(30);
+      cout<<product_name;
+
+
+
+      cout.width(6); //numbers and decimals count
+      cout.setf(ios::right);
+
+      cout.setf(ios::showpoint);
+      if(totalProfit<10)
+        cout.precision(3);
+      else
+        cout.precision(4);
+      cout<<totalProfit;
+      cout.unsetf(ios::right);
+      cout<<endl;
+    }
+
+    in.get();  //takes '\n' right after the list of numbers so that the next getline will st\
+art reading the next product_name on the next line
+  }
+
+  in.close();
+
+  return 0;
+}
