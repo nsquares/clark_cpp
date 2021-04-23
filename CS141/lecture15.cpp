@@ -59,7 +59,7 @@ int main(){
     const int MAXP=4;
     string names[MAXP];
 
-    int score[MAXP][HOLES];
+    int score[MAXP][HOLES];   // THE 2D array
     int pcount;
     int hcount;
 

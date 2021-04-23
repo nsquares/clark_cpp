@@ -1,0 +1,9 @@
+Red delicious apples
+1.00 25 6 8 10
+Assorted bouquets
+4.00 50 10 10 0
+Camembert cheese
+2.00 25 10 12 4
+END
+
+
