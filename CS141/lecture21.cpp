@@ -26,12 +26,13 @@ private:
     string lname;
     string fname;
     int number;
+    bool deleted; //flag to delete things so they are not written at the end of the program 
 
     //there can be private functions that member functions only can use
 
 public:
     //accessors
-    void print_one() const; //dont change the values of the member variables
+    void print_one() const; //dont change the values of the member variables in object
     
     void write_one(ofstream &) const;
 
@@ -42,12 +43,12 @@ public:
     Phone_entry(string, string, int);
     Phone_entry(); //need to have a default if not putting in variable values immediately at instance declaring
 
-    //modifers / mutators
+    //modifiers / mutators
     void new_number(int); //we are not destroying the purpose of private data, we have more control
 
 
     //friends
-    bool friend operator < (Phone_entry, Phone_entry);
+    friend bool operator < (Phone_entry, Phone_entry);
 };
 
 bool operator < (Phone_entry p1, Phone_entry p2){ //dont need to say friend again
@@ -74,7 +75,7 @@ bool Phone_entry::match(string ln){
 
 
 
-
+//default constructor
 Phone_entry::Phone_entry(){  //cant be const because the whole point is to change or set values
     lname="uninitialized";
     fname="dont use";
@@ -82,6 +83,8 @@ Phone_entry::Phone_entry(){  //cant be const because the whole point is to chang
 }
 
 
+
+//new or custom constructor that I made
 Phone_entry::Phone_entry(string l, string f, int n){
 
     lname = l;
@@ -249,20 +252,30 @@ user interface-------------- (switch)
 void sort_book(vector<Phone_entry> &b){ 
     int top;
     int i;
-    Phone_entry temp;
+    Phone_entry temp;  //this uses the default constructor
 
     int count=b.size();
 
     top=0;
 
     while(top<count){
+
+
+
         for (i=count-1;i>top;i--){
+
+
             if(b[i-1]<b[i]){      //we need a friend
                 temp=b[i];
                 b[i]=b[i-1];
                 b[i-1]=temp;
             }
+
+            
         }
+
+
+
         top++;
     }
 }
