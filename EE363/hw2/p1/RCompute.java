@@ -1,5 +1,7 @@
 package hw2.p1;
 
+import java.text.DecimalFormat;
+
 public class RCompute implements Runnable{
   
   private int min;
@@ -7,12 +9,7 @@ public class RCompute implements Runnable{
 
   public RCompute(int left, int right){
     min = left;
-    max = right;
-    System.out.println(left);
-    System.out.println(right);
-
-    System.out.println(min);
-    System.out.println(max);
+    max = right; 
   }
 
   public void run(){
@@ -22,7 +19,8 @@ public class RCompute implements Runnable{
 
       mean += Math.sqrt(i);
     }
-    mean = mean/((double)max-(double)min);
-    System.out.println("["+Thread.currentThread()+"] Average of square roots ("+min+" to "+max+") = "+mean);
+    mean = mean/(((double)max-(double)min)+1);
+    
+    System.out.println("[Thread "+Thread.currentThread().getName()+"] Average of square roots  ("+min+" to "+max+") = "+ new DecimalFormat("#.##").format(mean));
   }
 }

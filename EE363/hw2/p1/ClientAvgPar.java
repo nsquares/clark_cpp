@@ -32,11 +32,9 @@ public class ClientAvgPar {
 	    int right = ThreadLocalRandom.current().nextInt(MAX_LEFT+1, MAX_RIGHT);
 	    String label = "thr_" + i; 
 
+
+      
 	    //the range is [left, right]; note that 0<left<MAX_LEFT<right<MAX_RIGHT
-
-      System.out.println(left);
-      System.out.println(right);
-
 	    computeUnits[i] = new RCompute(left, right); //creates the Runnable
 	    
 	    //this thread should average the numbers {sqrt(left), sqrt(left+1), ... sqrt(right)}
