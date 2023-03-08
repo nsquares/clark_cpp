@@ -1,0 +1,6 @@
+Created by: Nathan Nguyen
+
+I am taking this course because it is required for my major which is Computer Engineering. 
+I have taken many AP computer science classes in high school and have been the lead 
+programmer of a FRC team. I do not know c++ as well as I know java, c#, python, and SQL so
+I am happy that this class is at least in a new programming language for me. 

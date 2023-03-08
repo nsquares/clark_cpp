@@ -1,0 +1,15 @@
+[Thread thr_10] Average of square roots  (28 to 135) = 8.85
+[Thread thr_4] Average of square roots  (1 to 126) = 7.53
+[Thread thr_11] Average of square roots  (15 to 114) = 7.80
+[Thread thr_8] Average of square roots  (15 to 199) = 9.96
+[Thread thr_6] Average of square roots  (9 to 175) = 9.18
+[Thread thr_7] Average of square roots  (14 to 96) = 7.22
+[Thread thr_3] Average of square roots  (20 to 62) = 6.33
+[Thread thr_13] Average of square roots  (9 to 82) = 6.53
+[Thread thr_5] Average of square roots  (17 to 155) = 8.98
+[Thread thr_12] Average of square roots  (1 to 181) = 9.01
+[Thread thr_1] Average of square roots  (10 to 106) = 7.35
+[Thread thr_2] Average of square roots  (29 to 183) = 10.04
+[Thread thr_9] Average of square roots  (19 to 127) = 8.32
+[Thread thr_0] Average of square roots  (11 to 232) = 10.54
+[Thread thr_14] Average of square roots  (23 to 177) = 9.71

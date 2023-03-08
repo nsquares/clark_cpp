@@ -1,0 +1,23 @@
+Created by: Nathan Nguyen
+lab1.txt
+
+Question 1:
+ls does not show anything. This is because I just created this directory and have not
+created or stored any files in it yet.
+
+Question 2:
+The command does not perform as intended. What really happened was that it created a new
+file called 'docs' and copied the contents of file1.txt over to it. No new directory was
+made as it was placed right next to file1.txt. This command probably did not work because
+the docs directory has not been made yet and assumed it will be a new file instead under
+the lab1 directory. 
+
+Question 3:
+file1.txt no longer exist because the mv command seems to have renamed the file1.txt to
+file3.txt. file3.txt does have all the contents of file1.txt.
+
+Question 4:
+The rmdir command did not work. This is because it told me that the directory is not empty.
+In other words, it is because file3.txt is in it or any file in general is in it. 
+
+

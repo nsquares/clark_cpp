@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+//void readFile(string text, ifstream &in);
+//void writeFile(string text, ofstream &out);
+
+int main(){
+
+  char filename[80];
+  char outfilename[80];
+  string temp;
+
+  cout<<"Give me a file to infect: \n";  //add the .cpp at the end bro
+  cin>>filename;
+
+  cout<<"give me a new and unique file name: \n";   //add the .cpp at the end too here bro
+  cin>>outfilename;
+
+
+  ifstream in;
+  ofstream out;
+
+  in.open(filename);
+  if(in.fail()){
+    cout<<"opening file failed"<<endl;
+    return 0;
+  }
+
+
+  out.open(outfilename);
+
+
+
+  while (!in.eof()){
+    getline(in,temp);
+    out<<temp<<endl;
+    cout<<temp<<endl;
+  }
+  //cout<<temp<<endl;
+  in.close();
+  out.close();
+
+
+  return 0;
+}

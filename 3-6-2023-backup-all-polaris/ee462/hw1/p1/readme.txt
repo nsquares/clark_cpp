@@ -1,0 +1,29 @@
+Nathan Nguyen
+
+I worked alone on this problem. I did not use any sources.
+
+
+The commands used to generate the static library are:
+
+gcc -c cfact.c primes.c  
+ar crv libmathCU.a cfact.o primes.o
+
+I needed to first make object files and not run the linker.
+
+
+
+
+The commands used to run the driver test1.c using the library are:
+
+gcc -fPIC -o test.out test1.c libmathCU.a -std=c11
+./test.out 
+
+A different compiler verison was used because the given test file used newer C constructs like loop initialization declaration.
+
+
+The output was:
+
+1331: 1 11 121 1331
+27069: 1 3 7 21 1289 3867 9023 27069
+16: 1 2 4 8 16
+#non-primes: 3

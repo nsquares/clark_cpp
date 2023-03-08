@@ -1,0 +1,4 @@
+something epic like oop
+5 1 10 5
+large weapons
+100 5 200 500

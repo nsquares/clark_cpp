@@ -1,0 +1,80 @@
+// Nathan Nguyen
+// Inventory Assignment 
+// CS 141
+// last modified: 3/11/2021
+#include <iostream>
+#include <fstream> //will now be writing files
+using namespace std;
+
+void printRecord(string product_name,double wholesale_price,int quantity,double retail_price,double total_price_paid,ofstream &out);
+//write out the complete record of a product to a file that was created in the beginning of running this program 
+
+int main(){
+
+  string product_name;
+  double wholesale_price; //wholesale price per item
+  int quantity;
+  double total_price_paid; //by the company
+  double markup; //represented as a percent which is 10 for 10%
+  double retail_price;  
+
+  char userLoop; //holds user's reply to add another record
+
+  cout<<static_cast<char>(12); //line feed
+
+
+  ofstream out;
+  char filename[80];
+  
+  cout<<"File name?: ";
+  cin>>filename;  //ask the user for the name of a file to write info in
+
+  out.open(filename);
+  if(out.fail()){                          //check if it failed or not 
+    cout<<"Cannot open "<<filename<<endl;
+    return 0;  
+  }
+
+
+  do {
+  cout<<"What is the product name? "; //have to use get line now to get multiple words
+  cin>>product_name;  
+  getline(cin, product_name);
+    
+  cout<<"Wholesale price per item? ";
+  cin>>wholesale_price;
+
+  cout<<"Quantity? ";
+  cin>>quantity;
+  total_price_paid = wholesale_price * quantity;
+
+  cout<<"Markup (as a percent)? "; //has to be greater than one because I will convert number to decimal and will add one when calculating retail 
+  cin>>markup;
+  retail_price=wholesale_price*(1+(markup/100));
+
+
+  printRecord(product_name,wholesale_price,quantity,retail_price,total_price_paid,out);
+  
+  cout<<"Add another record (Y/N)?\n";
+  cin>>userLoop;
+
+
+  } while( (userLoop=='Y') || (userLoop=='y') );
+
+
+  out.close();
+
+  return 0;
+}
+
+
+
+
+
+void printRecord(string product_name,double wholesale_price,int quantity,double retail_price,double total_price_paid,ofstream &out){
+
+  out<<product_name<<endl;
+
+  out<<wholesale_price<<" "<<quantity<<" "<<retail_price<<" "<<(retail_price*quantity)-total_price_paid<<endl;
+  //print out complete record to file
+}

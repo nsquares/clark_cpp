@@ -1,0 +1,11 @@
+Nathan Nguyen
+
+I worked on this problem alone. I did not search for code on the internet to help me with this problem.
+
+
+I compiled by having the ClientRational.java in the same directory as Rational.java, then I used the command:
+
+javac *.java
+
+
+I then 

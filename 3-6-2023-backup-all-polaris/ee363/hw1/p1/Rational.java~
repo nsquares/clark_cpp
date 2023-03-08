@@ -1,0 +1,124 @@
+//Nathan Nguyen
+//EE 363
+//HW 1
+
+package hw1.p1;
+
+//immutable, internal fields/data do not change once constructed
+public class Rational { 
+  //handles/throws divison by zero by never creating a rational if den equals zero
+  //and memory overflow
+
+
+    //private data members of the class
+    private final int num;
+    private final int den; 
+    
+
+
+    
+    private static int gcd(int p, int q) { //local helper method
+	    
+      if(q==0) return p;
+	    int r = p % q;
+	    return gcd(q,r);    //Euclid's algorithm, from Java textbook
+    }
+
+    
+
+    public Rational(int numerator, int denominator) { //constructor
+	    
+      
+      if(denominator == 0){
+        //throw ;
+      }
+      
+      
+ 
+      int common = gcd(numerator, denominator);
+      //try reducing into lowest form, 
+      //this does not need to be a function because the class is immutable 
+      //and every member function will return a new instance of Rational 
+      //so this is the one and only needed check, same for denominator == zero.
+      //The definition of rational number is that denominator cannot equal zero.
+      num = numerator/common;
+      den = denominator/common;
+    }
+
+    //
+    public Rational plus(Rational b) { //sum of this and b
+      
+      int num1 = this.num;
+      int num2 = b.num;
+
+      int den1 = this.den;
+      int den2 = b.den;
+
+      int newNum = (num1*den2) + (num2*den1);
+      int newDen = den1*den2;
+
+      return new Rational(newNum,newDen);
+    }
+
+    //
+    public Rational minus(Rational b) { //difference of this and b
+      
+      int num1 = this.num;
+      int num2 = b.num;
+
+      int den1 = this.den;
+      int den2 = b.den;
+
+      int newNum = (num1*den2) - (num2*den1);
+      int newDen = den1*den2;
+
+      return new Rational(newNum,newDen);
+    }
+    
+    //
+    public Rational times(Rational b) { //product of this and b
+      
+      int newNum = this.num * b.num;
+      int newDen = this.den * b.den;      
+
+      //assert 
+
+      return new Rational(newNum,newDen); 
+    } 
+
+    //
+    public Rational divides(Rational b) { //quotient of this and b
+      
+      int newNum = this.num * b.den;
+      int newDen = this.den * b.num;      
+      return new Rational(newNum,newDen); 
+    }
+    
+    //
+    public boolean equals(Rational b) { //is this equal to b? value-wise?
+      
+      if((this.num == b.num) && (this.den == b.den)){  
+        
+        //it is assumed that both are in the lowest form 
+        //because of the constructor and immutable
+        return true;
+      }
+      else{
+        return false;  
+      }
+      
+    }
+
+    //
+    public String toString() { //for printing and overloading what Object superclass has for toString()
+	  
+      //always make the numerator negative on screen display
+      //if both num and den are negative, then both also flip to positive
+      if(0>den){ 
+        return (((num)*-1)+"/"+((den)*-1)); 
+      }
+      else{
+        return (num+"/"+den);
+      }
+    }
+}
