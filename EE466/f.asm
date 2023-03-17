@@ -37,10 +37,26 @@ delimStr:    .asciiz ", "
 
 main: 
 
-      addi $t1, $zero, 1  # $s1 will register new previous value from $s2
-      addi $t0, $zero, 1  # $s2 will register new current value from $s3      
+      #addi $t1, $zero, 1  # $s1 will register new previous value from $s2
+      #addi $t0, $zero, 1  # $s2 will register new current value from $s3      
 
-      sw $t0 4($t1)
+      #sw $t0 4($t1)
+
+
+      # sll $t1, $s3, 2  #LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX
+      # add $t1, $t1, $s6
+      # lw $t0, 0($t1)
+      # addi $s3, $s3, 1
+      # slt $t0, $s3, $s4
+      # sw $t0, 4($s3)
+
+
+li $a0, 10     #aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+not $t0, $t1   #bbbbbbbbbbbbbbbbbbbbbbbbbb
+bge $s1, $s2, label #cccccccccccccccccccccccc
+seq $t1, $t2, $t3 #dddddddddddddddddddddd
+
+
 
       # exit 
       li $v0, 10             #system call code for exit
