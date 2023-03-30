@@ -37,13 +37,30 @@ delimStr:    .asciiz ", "
 
 main: 
 
+
+
+lw $a0 -4($sp) #LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX
+sll $v0, $a0, 2
+
+addi $t0, $zero, 0
+sw $v0, -8 #LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX
+lllldwadwaloop: beq $t1, $a1, eexit
+addi $a0, $a0, 4
+addi $t1, $t1, 1
+lw $t2, 0($a0)
+add $t0, $zero, $t3
+add $t0, $zero, $t2
+j lllldwadwaloop #LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX#LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX
+eexit: add $t0, $zero, $t2
+
+
       #addi $t1, $zero, 1  # $s1 will register new previous value from $s2
       #addi $t0, $zero, 1  # $s2 will register new current value from $s3      
 
       #sw $t0 4($t1)
 
 
-      # sll $t1, $s3, 2  #LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX
+      # sll $t1, $s3, 2  
       # add $t1, $t1, $s6
       # lw $t0, 0($t1)
       # addi $s3, $s3, 1
@@ -51,14 +68,14 @@ main:
       # sw $t0, 4($s3)
 
 
-li $a0, 10     #aaaaaaaaaaaaaaaaaaaaaaaaaaaa
-not $t0, $t1   #bbbbbbbbbbbbbbbbbbbbbbbbbb
-bge $s1, $s2, label #cccccccccccccccccccccccc
-seq $t1, $t2, $t3 #dddddddddddddddddddddd
+# li $a0, 10     #aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+# not $t0, $t1   #bbbbbbbbbbbbbbbbbbbbbbbbbb
+# bge $s1, $s2, label #cccccccccccccccccccccccc
+# seq $t1, $t2, $t3 #dddddddddddddddddddddd
 
 
 
-      # exit 
-      li $v0, 10             #system call code for exit
-      syscall                #executes exit
-      # exit 
+      # # exit 
+      # li $v0, 10             #system call code for exit
+      # syscall                #executes exit
+      # # exit 
