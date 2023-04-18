@@ -17,7 +17,8 @@
 # $t0   n (input from user / also continue input)
 # $t1   0   for negative input check 
 #
-# $  a number to multiply
+# $v1  a number to multiply
+# $v0  has result, this accumulates
 
 
             .data
@@ -27,6 +28,15 @@ continueStr:  .asciiz "\nDo you want to continue? Enter 1 (exit with 0): "
 delimStr:    .asciiz ", "
             .text
             .globl main
+
+
+negative_case_error:
+      li $v0, 4               # load value for macro print_str
+      la $a0, negErrStr       # pass argument the continue string
+      syscall                 # print negative error str
+
+      j askUserN              # jump back to the beginning of the program
+
 
 main: 
     # FIRST THING: to do is create a stack frame for main (push stack)
@@ -54,7 +64,8 @@ askUserN:
       move $t0, $v0            # $t0 = $v0, move out of syscall register into register that we control
 
       addi $t1, $zero, 0       # $t1=0 (used to determine negative input case [n should be >= 0])
-      blt $t0, $t1, negative_case_error  # if n < 0, branch to negative input case error handler section
+      blt $t0, $t1, negative_case_error   #LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX#LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX#LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX#LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX#LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX#LMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOXLMAOBOX
+      # if n < 0, branch to negative input case error handler section
 
       add $a0, $t0, $zero      # move/pass n as an argument to factorial function
     # factorial recursive function start (call fact)
@@ -97,12 +108,7 @@ askUserN:
       #syscall                #executes exit
       # exit 
 
-negative_case_error:
-      li $v0, 4               # load value for macro print_str
-      la $a0, negErrStr       # pass argument the continue string
-      syscall                 # print negative error str
 
-      j askUserN              # jump back to the beginning of the program
 
 
 
@@ -119,7 +125,7 @@ fact:
 
       lw        $v0, 0($fp)      # Load n into result reg
       bgtz      $v0, fact_logic  # Branch if n > 0 
-      li        $v0, 1           # else Return 1 
+      li        $v0, 1           # else n == 0 and return 1 
       jr        fact_returning   # Jump to code for returning out of fact function
 
 fact_logic:
@@ -130,9 +136,11 @@ fact_logic:
       lw        $v1, 0($fp)      # Load n 
       mul       $v0, $v0, $v1    # Compute fact(n-1) * n
 
+            # $v0 accumulates over time (when popping)
+
 fact_returning:
       # pop stack (free up space)
-      # Result is in $v0 
+      # ************** Result is in $v0 *************************
       lw        $ra, 20($sp)     # Restore $ra 
       lw        $fp, 16($sp)     # Restore $fp 
       addiu     $sp, $sp, 32     # Pop stack 
