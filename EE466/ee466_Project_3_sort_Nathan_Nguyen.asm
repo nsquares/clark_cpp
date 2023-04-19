@@ -49,7 +49,7 @@ main: #handles input and output
     sw        $fp, 16($sp)     # Save old frame pointer (placed in "word 4")
     sw        $s0, 12($sp)     # Saving old s0
     sw        $s1, 8($sp)      # Saving old s1  (reqiurement for all procedures, save saved registers)
-    sw        $s2, 4($sp)      # Saving old s2
+    #sw        $s2, 4($sp)      # Saving old s2
     addiu     $fp, $sp, 28     # Set up frame pointer (address here is +7 words up from the last word in frame that the $sp is pointing to)
 
     #display hard-coded input array:
@@ -59,7 +59,7 @@ main: #handles input and output
 
     #init key registers:
     lw $s0, arraySize     # load arraySize and this holds array size ($s0)    
-    addi $s2, $s0, -1     # subtract by 1 for finding when to skipDelimiter 
+    #addi $s2, $s0, -1     # subtract by 1 for finding when to skipDelimiter 
     addi $t0, $zero, 0    # for loop incrementor (int i = 0)
     la $s1, inArray       # load base address of array
 printLoop:
@@ -70,12 +70,13 @@ printLoop:
     li $v0, 1             # load value for macro print_int        
     syscall               # print array
 
-    beq $t0, $s2, skipDelimiter #check if this is the last element in the array to print, dont print delimiter
+    addi $t0, $t0, 1  #increment i    
+    
+    beq $t0, $s0, skipDelimiter #check if this is the last element in the array to print, dont print delimiter
     li $v0, 4          # load value for macro print_str
     la $a0, delimStr   # pass argument the delimiter string
     syscall            # print delimiter
-skipDelimiter:
-    addi $t0, $t0, 1  #increment i    
+skipDelimiter:    
     bne $t0, $s0, printLoop #if (i != (arraySize)) loop again to print next element in array
 
     #" "main" calls two procedures, "swap" and "sort" "
@@ -98,12 +99,13 @@ printLoop2:
     li $v0, 1             # load value for macro print_int        
     syscall               # print array
 
-    beq $t0, $s2, skipDelimiter2 #check if this is the last element in the array to print, dont print delimiter
+    addi $t0, $t0, 1  #increment i    
+
+    beq $t0, $s0, skipDelimiter2 #check if this is the last element in the array to print, dont print delimiter
     li $v0, 4          # load value for macro print_str
     la $a0, delimStr   # pass argument the delimiter string
     syscall            # print delimiter
 skipDelimiter2:
-    addi $t0, $t0, 1  #increment i    
     bne $t0, $s0, printLoop2 #if (i != (arraySize)) loop again to print next element in array
 
     # LAST THING: free up space (restore stack) 
@@ -112,7 +114,7 @@ skipDelimiter2:
     lw        $fp, 16($sp)     # Restore frame pointer 
     lw        $s0, 12($sp)     # Restore old s0
     lw        $s1, 8($sp)      # Restore old s1
-    lw        $s2, 4($sp)      # Restore old s2
+    #lw        $s2, 4($sp)      # Restore old s2
     addiu     $sp, $sp, 32     # Pop stack frame 
     jr        $ra              # Return to caller of procedure main
 
