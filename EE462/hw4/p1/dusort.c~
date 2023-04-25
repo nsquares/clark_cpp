@@ -1,0 +1,83 @@
+//Nathan Nguyen
+//hw4 p1
+//ee 462
+
+
+//In essences, the child process is setup to read input data from the parent process and then becomes SORT.
+//The parent process calls DU and picks specific data out to give to the child process.
+//The pipe is between the parent process to the child process.
+
+//Order of events:
+//  -Create the pipe
+//  -Fork this current program, which the current program will become the parent process and a child will be created.
+//  -each process sets up what they should do and then does it
+
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+  printf("one pipe?\n"); //delete me after
+
+  int pipeFD[2];  //int array with 2 elements to hold read file descriptor and then write file descriptor
+  pid_t fork_result;
+  
+  if (pipe(pipeFD) == 0) { //zero means success
+    // pipeFD[0] == read end
+    // pipeFD[1] == write end
+    
+    printf("pipeFD[0]: %d\n", pipeFD[0]);
+    printf("pipeFD[1]: %d\n", pipeFD[1]); //delete me after
+    
+    fork_result = fork();
+    if (fork_result == (pid_t)-1) {  //if -1, then failure (type cast used here)
+      fprintf(stderr, "Fork failure");
+      exit(2);
+    }
+    
+    if (fork_result == (pid_t)0) { //child process code: 
+      //(note, has a copy of all previous variables and especially the pipeFD because of fork)    
+      //(this process runs the SORT shell command)
+
+      // FD 0 == stdin
+      // We want to close this as normal shell commands only read from FD 0.
+      // Then replace or duplicate with an FD that we just created here with the 
+      // pipe system call.
+
+      close(0); //close stdin
+      dup(pipeFD[0]); //duplicate reading end of pipe and the DUP(2) system call will make the lowest availabe FD number be the same as the given FD argument to the DUP function
+      close(pipeFD[0]);
+      close(pipeFD[1]); 
+      //close reading and then writing end of pipe (only for and within the child process)
+      
+      //replace this child process with SORT
+      printf("I am here\n");                  //delete me after
+      execlp("sort", "sort", "-n", (char *)0); 
+      printf("execlp Failed\n");
+      exit(3);
+    }
+    else{ //parent process code:
+      //call DU, process data obtained, pass to child process (which is SORT)
+      // (there is actually no need for me to do any post data processing after obtaining raw data from DU, DU can use an if statement)
+
+      //the lesson here is that you should always use the man7 pages online, use control-f, and find keywords to find out if the shell command can already do some of the data processing for you like DU has -t to cut out some file sizes from displaying................
+
+      close(1); //close stdout
+      dup(pipeFD[1]); //duplicate writing end of pipe to be the stdout FD number
+      close(pipeFD[0]);
+      close(pipeFD[1]);
+      printf("I am the parent and I am stupid\n");
+      execlp("du", "du", "-t 100", "/usr/local/", (char *)0);
+      printf("execlp Failed in parent\n");
+      exit(4);
+    }
+  }  
+  else{
+    printf("pipe system call failed\n");
+    exit(1);
+  }
+
+  exit(0);
+}
